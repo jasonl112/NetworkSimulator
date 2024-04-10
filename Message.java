@@ -5,6 +5,14 @@ public class Message extends Event {
 
   }
 
+  private int srcAddress;
+  private int destAddress;
+
+  public Message(int srcAddress, int destAddress) {
+    this.srcAddress = srcAddress;
+    this.destAddress = destAddress;
+  }
+
   @Override
   public void cancel() {
 
@@ -20,11 +28,11 @@ public class Message extends Event {
   }
 
   public int getSrcAddress() {
-    return 0;
+    return this.srcAddress;
   }
 
   public int getDestAddress() {
-    return 0;
+    return this.destAddress;
   }
 
   public int setNextHop(Host desination, int distance) {

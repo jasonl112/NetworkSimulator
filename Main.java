@@ -9,49 +9,29 @@ public class Main {
     File myFile = new File("simulation1.txt");
     Scanner myScnr = new Scanner(myFile);
 
-    String line = "";
+    int address = myScnr.nextInt();
+    SimpleHost firstHost = new SimpleHost();
+    firstHost.setHostParameters(address, eventList);
+
+    address = myScnr.nextInt();
+    while (address != -1) {
+      int distance = myScnr.nextInt();
+      SimpleHost newHost = new SimpleHost();
+      newHost.setHostParameters(address, eventList);
+      firstHost.addNeighbor(newHost, distance);
+      newHost.addNeighbor(firstHost, distance);
+      address = myScnr.nextInt();
+    }
+
     while (myScnr.hasNext()) {
-      line = myScnr.nextLine();
-      String[] split = line.split("\\s");
-      System.out.println(split);
-      for (String element : split) {
-        if (split.length == 1) {
-          Integer address = Integer.parseInt(element);
-          System.out.println(address);
-        } else if (split.length == 2) {
-          Integer address = Integer.parseInt(element);
-          if (address != null) {
-            Integer dist = Integer.parseInt(element);
-            System.out.println(address + " " + dist);
-          }
-          continue;
-
-        }
-
-        /*
-         * Integer parsedInt = Integer.parseInt(element);
-         * if (parsedInt == -1)
-         * return;
-         * 
-         * 
-         * System.out.println(parsedInt);
-         */
-      }
-
-      /*
-       * if (temp == -1)
-       * break;
-       * 
-       * if (temp == 5) {
-       * System.out.println("created");
-       * SimpleHost newSimpleHost = new SimpleHost();
-       * newSimpleHost.setHostParameters(temp, eventList);
-       * }
-       * System.out.println(temp);
-       * SimpleHost Host = new SimpleHost();
-       * Host.setHostParameters(temp, eventList);
-       * newSimpleHost.addNeighbor(Host, dist)
-       */
+      int srcAddress = myScnr.nextInt();
+      System.out.println(srcAddress);
+      int desAddress = myScnr.nextInt();
+      System.out.println(desAddress);
+      int interval = myScnr.nextInt();
+      int duration = myScnr.nextInt();
+      Message newMessage = new Message(srcAddress, desAddress);
+      firstHost.sendToNeighbor(newMessage);
     }
 
     myScnr.close();
