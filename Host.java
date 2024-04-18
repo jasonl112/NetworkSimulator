@@ -115,6 +115,7 @@ public abstract class Host {
         msg.setNextHop(neighbor, distance); // next hop is neighbor host we will send to
 
         this.fel.insert(msg);
+        // System.out.println("Inserted new message");
     }
 
     /**

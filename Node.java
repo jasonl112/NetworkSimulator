@@ -1,15 +1,15 @@
 public class Node {
-  private final int item;
+  private final Event item;
   public Node next;
   public Node prev;
 
-  public Node(int item) {
+  public Node(Event item) {
     this.item = item;
     this.next = null;
     this.prev = null;
   }
 
-  public int getItem() {
+  public Event getItem() {
     return this.item;
   }
 }

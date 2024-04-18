@@ -1,7 +1,8 @@
 /**
  * Timer event.
  * <br>
- * Timers are events which are handled after a specific period of time has passed (the duration).  When a timer's
+ * Timers are events which are handled after a specific period of time has
+ * passed (the duration). When a timer's
  * duration is up, the timer expires (is handled).
  */
 public class Timer extends Event {
@@ -18,6 +19,7 @@ public class Timer extends Event {
 
     @Override
     public void setInsertionTime(int currentTime) {
+
         this.insertionTime = currentTime;
         this.arrivalTime = currentTime + this.duration;
     }
@@ -30,5 +32,11 @@ public class Timer extends Event {
     @Override
     public void handle() {
         this.host.onTimerExpiry(this);
+    }
+
+    @Override
+    public String toString() {
+        return "[Event Timer " + this.getId() + " (insertion time: " + this.getInsertionTime() + ", arrival time: " +
+                this.getArrivalTime() + ")]";
     }
 }
